@@ -1,0 +1,68 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+  }
+.card bg-dark {
+  border-radius: 1rem;
+}
+.MuiBox-root {
+  width: 100%;
+}
+.error {
+  color: red;
+  margin-bottom: 5px;
+}
+.inner-wrapper {
+  margin-top: 80px;
+  margin-left: 10px;
+}
+.page-title {
+  color: #1976d2;
+  font-size: 30px;
+}
+.MuiDrawer-root.MuiDrawer-docked.css-cvumne-MuiDrawer-docked {
+  height: 100vh;
+}
+@media (min-width: 576px){
+.modal-dialog {
+    margin: 6.75rem auto;
+}
+}
+span.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 22px;
+  color: #1976d2;
+  font-weight: 700;
+}
+#star-rating{
+  font-size: 25px;
+  font-weight: bolder;
+  color: #1976d2;
+  letter-spacing: 3px;
+}
+.pagination-wrapper {
+  display: table;
+  margin: 0 auto;
+}
+.buy_now_btn {
+  background: #d3b4ef;
+  border-color: #d3b4ef;
+}
+.shop_section .slider-wrapper {
+  height: auto !important;
+}
+.shop_section .carousel .slide img {
+  width: auto;
+}
+.fa-heart.position-relative {
+  font-size: 18px;
+}
+.rounded-pill.bg-danger {
+  font-size: 8px;
+}
