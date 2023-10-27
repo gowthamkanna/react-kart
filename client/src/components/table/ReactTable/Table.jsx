@@ -204,7 +204,7 @@ const Table = ({ columns, data }) => {
                 // gotoPage(Number(pageNumber));
               }}
             // onFocus={handleFocus}
-            // value={gotoPageValue}
+            value={gotoPageValue}
             />
           </span>
         )}

@@ -9,12 +9,15 @@ import Slider_1 from "./assets/slider/slider_1.jpeg";
 import Slider_2 from "./assets/slider/slider_2.jpeg";
 import Slider_3 from "./assets/slider/slider_3.jpeg";
 import Savings from "./assets/temp_img/saving-img.png";
+import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function Home () {
 
     const [latest, setLatest] = useState([]);
     // const {latestProducts} = useSelector((state) => state.product); 
     const dispatch = useDispatch();
+    // const navigate = useNavigate();
     
     const sliderConfiguration = () => ({
         showArrows: true,
@@ -75,6 +78,13 @@ export default function Home () {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    // function redirectToProductDetail(id){
+    //   const data = { ProductID: id };
+    //   navigate('/product-details', {
+    //       state: data
+    //   });
+    // }
+
     return(
         <>
             <Header />
@@ -116,9 +126,12 @@ export default function Home () {
                                     {getOverallRating(product.Reviews)}
                                   </div>
                                   <div className="detail-box">
-                                    <h6>
-                                    {product.Name}
-                                    </h6>
+                                    {/* <h6 onClick={() => redirectToProductDetail(product._id)} className="cursor-pointer">
+                                      {product.Name}
+                                    </h6> */}
+                                    <Link to={`/product-details/${product._id}`}><h6  className="cursor-pointer">
+                                  {product.Name}
+                                  </h6></Link>
                                     <h6>
                                         Price :
                                       <span>

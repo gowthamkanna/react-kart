@@ -66,3 +66,27 @@ span.card-title {
 .rounded-pill.bg-danger {
   font-size: 8px;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.strikked-text {
+  text-decoration: line-through;
+  padding-right: 10px;
+}
+.product-price {
+  font-size: 16px;
+  background: #1ca16347!important;
+  color: #000;
+}
+.product-original-price {
+  color: #00000073;
+}
+.rating-name {
+  color: #4471c3;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.float-end.product-detail-rating i {
+  color: #ffd808;
+  font-size: 25px;
+}

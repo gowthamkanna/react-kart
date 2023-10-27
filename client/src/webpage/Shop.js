@@ -5,6 +5,7 @@ import Footer from "./Layout/Footer";
 import Pagination from "../components/pagination/Pagination";
 import { Carousel } from 'react-responsive-carousel';
 import { getProducts } from "../redux/Slice/product.slice";
+import { Link } from "react-router-dom";
 
 let PageSize = 10;
 
@@ -13,6 +14,8 @@ export default function Shop () {
     const [products, setProducts] = useState([]);
     // const {products} = useSelector((state) => state.product);
     const [currentPage, setCurrentPage] = useState(0);
+    // const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProducts()).then((res) => {
@@ -28,8 +31,6 @@ export default function Shop () {
       return products.slice(firstPageIndex, lastPageIndex);
        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
-
-    const dispatch = useDispatch();
 
     const ProductSliderConfiguration = () => ({
       showArrows: false,
@@ -47,6 +48,10 @@ export default function Shop () {
       interval: 3000,
   });
 
+  // function productDetailRedirect(id){
+  //   const data = { ProductID: id };
+  //   navigate('/product-details');
+  // }
 
     return(
         <>
@@ -75,9 +80,13 @@ export default function Shop () {
                                  </Carousel>
                                 </div>
                                 <div className="detail-box">
-                                  <h6>
+                                   {/* <h6 onClick={() => redirectToProductDetail(product._id)} className="cursor-pointer">
+                                      {product.Name}
+                                    </h6> */}
+                                    <Link to={`/product-details/${product._id}`}><h6  className="cursor-pointer">
                                   {product.Name}
-                                  </h6>
+                                  </h6></Link>
+                                  
                                   <h6>
                                       Price :
                                     <span>
