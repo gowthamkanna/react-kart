@@ -19,18 +19,24 @@ const Wishlists = () => {
   return (
     <>
     <Header />
+    <section className="shop_section layout_padding">
     <div className='container'>
+    <div className="heading_container heading_center">
+                  <h2>
+                    Wishlist
+                  </h2>
+                </div>
         <div className='row'>
             {
                 (wishlistItems.length > 0 ) ? 
                 wishlistItems.map((item) => (
                     <WishlistProducts key={item._id} item={item} />
-                )) : <li>No Items Found..</li>
+                )) : <span className="badge bg-danger pt-3 pb-3">No Items Found..</span>
             }
             
         </div>
     </div>
-    
+    </section>
     <Footer />
     </>
   )

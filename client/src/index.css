@@ -108,3 +108,7 @@ img.img-small {
   height: 150px;
   padding-right: 30px;
 }
+.layout_padding {
+  padding-top: 60px !important;
+  padding-bottom: 90px;
+}
