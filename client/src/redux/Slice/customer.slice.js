@@ -33,10 +33,22 @@ export const getCustomerData = createAsyncThunk(
     }
 )
 
+export const getCustomerWishlistedProducts = createAsyncThunk("getCustomerWishlistedProducts", async (id) => {
+    const result = await customerServices.getCustomerWishlistedProducts(id);
+    return result.data;
+}
+)
+
+export const addToWishlist = createAsyncThunk("addToWishlist", async({ userID, productID }) => {
+    const result = await customerServices.addToWishlist({ userID, productID });
+    return result.data;
+})
+
 const customerSlice = createSlice({
     name: "customer",
     initialState : {
         customer:{},
+        wishlist:[],
         message: {},
         loading: false,
     },
@@ -85,6 +97,26 @@ const customerSlice = createSlice({
             state.loading= false;
             state.message= action.payload;
         },
+        [getCustomerWishlistedProducts.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getCustomerWishlistedProducts.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.wishlist = action.payload;
+        },
+        [getCustomerWishlistedProducts.rejected]: (state, action) => {
+            state.message = action.payload;
+        },
+        [addToWishlist.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [addToWishlist.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.wishlist = action.payload.wishlist;
+        },
+        [addToWishlist.rejected]: (state, action) => {
+            state.message = action.payload;
+        }
     }
 });
 

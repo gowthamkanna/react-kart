@@ -1,9 +1,8 @@
 const router = require("express").Router();
 const Product = require("../model/ProductSchema");
-const Wishlist = require("../model/wishlistSchema");
 const uploadMiddleware = require("../middlewares/uploadMiddleware");
 const deleteFileMiddleware = require("../middlewares/deleteFilesMiddleware");
-const { route } = require("./reviews");
+// const { route } = require("./reviews");
 
 
 // Add Product
@@ -130,21 +129,5 @@ router.get("/latest-products", async(req, res) => {
     });
 });
 
-
-// insert user wishlist
-
-router.post("/wishlists", async(req, res) => {
-    try {
-        const insertWishlist = new Wishlist({
-            userId: req.body.userId,
-            productId: req.body.productId
-        });
-        const result = await insertWishlist.save();
-        res.status(200).send({type: "success" ,message: "Product added to your wishlist..!", product: result});
-    }
-    catch(err){
-        res.status(400).json(err);
-    }
-});
 
 module.exports = router;

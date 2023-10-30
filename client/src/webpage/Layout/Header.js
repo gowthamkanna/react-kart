@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { customerLogout, getCustomerData } from "../../redux/Slice/customer.slice";
 import "../assets/style.css";
 import "../assets/responsive.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const authToken = localStorage.getItem("authToken");
   const userId = localStorage.getItem("userId");
   const [name, setName] = useState("Guest");
   const [wishlistCount, setWishlistCount] = useState(0);
+  const {wishlist} = useSelector((state) => state.customer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   function userLoggedIn(){
@@ -28,14 +29,16 @@ export default function Header() {
       <i className="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;
       {name}
       </a>
+      <Link to="/wishlists">
       <i className="fa-regular fa-heart position-relative">
         {wishlistCount > 0 ? 
         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           {wishlistCount}
-            <span className="visually-hidden">Wishlist</span>
+          <span className="visually-hidden">Wishlist</span>
           </span>
           : null }
       </i>
+      </Link>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button onClick={userLogout} className="btn nav_search-btn">
       <i className="fa fa-power-off" aria-hidden="true" ></i>
@@ -55,11 +58,11 @@ export default function Header() {
     if(userId !== null){
     dispatch(getCustomerData(userId)).then((res) => {
       setName(res.payload.CustomerName);
-      setWishlistCount(res.payload.wishlistCount);
+      setWishlistCount(res.payload.WishlistedProducts.length);
     });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [dispatch, wishlist]);
 
     return (
         <>

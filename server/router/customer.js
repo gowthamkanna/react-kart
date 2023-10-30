@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Customer = require("../model/customerSchema");
-const Wishlist = require("../model/wishlistSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -53,9 +52,9 @@ router.post("/customer-login", async(req, res) => {
 router.get("/customers/:id", async (req, res) => {
     try{
     const data = await Customer.findById(req.params.id);
-    const wishlist = await Wishlist.find({userId : req.params.id});
-    const result = {...data._doc, wishlistCount : wishlist.length};
-    res.json(result);
+    // const wishlist = await Wishlist.find({userId : req.params.id});
+    // const result = {...data._doc, wishlistCount : wishlist.length};
+    res.json(data);
     }
     catch(err){
         res.status(400).json(err);

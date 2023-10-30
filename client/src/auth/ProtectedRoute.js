@@ -23,7 +23,6 @@ export const ProtectedWebRoute = ({children}) => {
     // let authToken = user.token;
     let authToken = localStorage.getItem("authToken");
     let userType = localStorage.getItem("userType");
-    console.log(location);
     if(authToken == null) {
         return <Navigate to="/login" state={{ from: location}} replace />
     }

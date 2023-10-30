@@ -9,11 +9,19 @@ const customerLogin = (data) => {
 const getCustomerData = (id) => {
     return api.get(`/customers/${id}`);
 }
+const getCustomerWishlistedProducts = (id) => {
+    return api.get(`/wishlists/${id}`);
+}
+const addToWishlist = (data) => {
+    return api.post(`/wishlists/`, data);
+}
 
 const customerServices = {
     customerRegister,
     customerLogin,
     getCustomerData,
+    getCustomerWishlistedProducts,
+    addToWishlist,
 }
 
 export default customerServices;

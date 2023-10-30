@@ -5,7 +5,9 @@ import Footer from "./Layout/Footer";
 import Pagination from "../components/pagination/Pagination";
 import { Carousel } from 'react-responsive-carousel';
 import { getProducts } from "../redux/Slice/product.slice";
+import { addToWishlist } from "../redux/Slice/customer.slice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 let PageSize = 10;
 
@@ -53,6 +55,16 @@ export default function Shop () {
   //   navigate('/product-details');
   // }
 
+  function addProductToWishlist(productID){
+    const userID = localStorage.getItem("userId");
+    dispatch(addToWishlist({userID, productID})).then(res => {
+      toast.success(res.payload.message);
+    })
+    .catch(err => {
+      toast.error(err.message);
+    })
+  }
+
     return(
         <>
             <Header />
@@ -97,7 +109,7 @@ export default function Shop () {
                               </a>
                               <div className="text-center mt-2 mb-2"><button className="btn btn-info buy_now_btn"><i className="fa fa-shopping-cart" ></i></button>
                               &nbsp;
-                              <button className="btn btn-info buy_now_btn"><i className="fa-solid fa-heart"></i></button>
+                              <button onClick={() => addProductToWishlist(product._id)} className="btn btn-info buy_now_btn"><i className="fa-solid fa-heart"></i></button>
                               </div>
                             </div>
                             </div>

@@ -90,3 +90,21 @@ span.card-title {
   color: #ffd808;
   font-size: 25px;
 }
+.image-parent {
+  /* max-width: 150px; */
+  float: left;
+}
+.list-group {
+  padding: 30px 0;
+}
+span.list-text {
+  margin-left: 50px;
+}
+li.list-group-item {
+  padding: 15px;
+}
+img.img-small {
+  width: auto;
+  height: 150px;
+  padding-right: 30px;
+}
