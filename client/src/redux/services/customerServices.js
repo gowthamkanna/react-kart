@@ -15,6 +15,9 @@ const getCustomerWishlistedProducts = (id) => {
 const addToWishlist = (data) => {
     return api.post(`/wishlists/`, data);
 }
+const removeWishlist = (data) => {
+    return api.post(`/remove-wishlisted/`, data);
+}
 
 const customerServices = {
     customerRegister,
@@ -22,6 +25,7 @@ const customerServices = {
     getCustomerData,
     getCustomerWishlistedProducts,
     addToWishlist,
+    removeWishlist,
 }
 
 export default customerServices;

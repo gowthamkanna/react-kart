@@ -44,6 +44,11 @@ export const addToWishlist = createAsyncThunk("addToWishlist", async({ userID, p
     return result.data;
 })
 
+export const removeWishlist = createAsyncThunk("removeWishlist", async({ userID, productID }) => {
+    const result = await customerServices.removeWishlist({ userID, productID });
+    return result.data;
+})
+
 const customerSlice = createSlice({
     name: "customer",
     initialState : {
@@ -102,7 +107,7 @@ const customerSlice = createSlice({
         },
         [getCustomerWishlistedProducts.fulfilled]: (state, action) => {
             state.loading = false;
-            state.wishlist = action.payload;
+            state.customer.WishlistedProducts = action.payload;
         },
         [getCustomerWishlistedProducts.rejected]: (state, action) => {
             state.message = action.payload;
@@ -116,10 +121,21 @@ const customerSlice = createSlice({
         },
         [addToWishlist.rejected]: (state, action) => {
             state.message = action.payload;
+        },
+        [removeWishlist.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [removeWishlist.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.wishlist = action.payload.wishlist;
+        },
+        [removeWishlist.rejected]: (state, action) => {
+            state.message = action.payload;
         }
     }
 });
 
+export const getCustomerWishlisted = (state) => state.customer.WishlistedProducts;
 export const {reducer} = customerSlice;
 
 export default reducer;

@@ -7,15 +7,17 @@ import WishlistProducts from './WishlistProducts';
 
 const Wishlists = () => {
     const[wishlistItems, setWishlistItems] = useState([]);
+    const wishlistArray = useSelector((state) => state.customer.wishlist);
     const userID = localStorage.getItem("userId");
-    // const {wishlist} = useSelector((state) => state.customer);
-    const dispath = useDispatch();
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        dispath(getCustomerWishlistedProducts(userID)).then((res) => {
+      dispatch(getCustomerWishlistedProducts(userID)).then((res) => {
             setWishlistItems(res.payload);
         });
-    }, [dispath])
+    }, [dispatch, wishlistArray, userID]);
+
   return (
     <>
     <Header />

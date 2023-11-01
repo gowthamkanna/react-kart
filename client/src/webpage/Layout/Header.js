@@ -10,7 +10,7 @@ export default function Header() {
   const userId = localStorage.getItem("userId");
   const [name, setName] = useState("Guest");
   const [wishlistCount, setWishlistCount] = useState(0);
-  const {wishlist} = useSelector((state) => state.customer);
+  const wishlistArray = useSelector((state) => state.customer.wishlist);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   function userLoggedIn(){
@@ -62,7 +62,7 @@ export default function Header() {
     });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, wishlist]);
+  }, [dispatch, wishlistArray]);
 
     return (
         <>

@@ -39,5 +39,26 @@ router.get("/wishlists/:id", async(req, res)=> {
     }
 });
 
+// delete wishlisted products from customer record
+router.post("/remove-wishlisted", async(req, res) => {
+    try{
+        const wishlistedProducts = await Customer.findById(req.body.userID);
+        // const removeIndex = wishlistedProducts.findIndex(req.body.productID);
+        wishlistedProductsResult = [...wishlistedProducts.WishlistedProducts];
+        updatedWishlistedProduct = wishlistedProductsResult.filter((item) => (item.toString() !== req.body.productID));
+        await Customer.findByIdAndUpdate(req.body.userID, {
+            WishlistedProducts: updatedWishlistedProduct,
+            }, {new: true})
+        .then(data => {
+            res.status(200).send({type: "success" ,message: "Product removed to your wishlist..!", wishlist: updatedWishlistedProduct});
+        })
+        .catch(err => {
+            res.status(400).json({type: "error" ,message: err.message});
+        });
+    }
+    catch(err){
+        res.status(400).json({type: "error" ,message: err.message});
+    }  
+});
 
 module.exports = router;
