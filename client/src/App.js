@@ -7,11 +7,11 @@ import {ProtectedRoute, ProtectedWebRoute, LoggedInRoute, LoggedInAdminRoute} fr
 // import WebRoute from './webpage/auth/WebRoute';
 import Reviews from './pages/admin/reviews/Reviews';
 import Home from './webpage/Home';
-import Shop from './webpage/Shop';
+import Shop from './webpage/Shop/Shop';
 import Login from './webpage/auth/Login';
 import ProductDetail from './webpage/ProductDetail';
 import Register from './webpage/auth/Register';
-import Wishlists from './webpage/Wishlists';
+import Wishlists from './webpage/Wishlists/Wishlists';
 import Error404 from './webpage/error_pages/Error404';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

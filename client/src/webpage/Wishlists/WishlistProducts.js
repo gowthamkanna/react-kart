@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { removeWishlist } from '../redux/Slice/customer.slice';
+import { removeWishlist } from '../../redux/Slice/customer.slice';
 
 const WishlistProducts = ({item}) => {
   const navigate = useNavigate();

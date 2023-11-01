@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addToWishlist } from '../redux/Slice/customer.slice';
+import { addToWishlist } from '../../redux/Slice/customer.slice';
 import { toast } from 'react-toastify';
 
 const WishlistButton = ({productID, wishlistedProducts}) => {

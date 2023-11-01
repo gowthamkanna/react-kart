@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
-import Header from "./Layout/Header";
-import Footer from "./Layout/Footer";
-import Pagination from "../components/pagination/Pagination";
-import { getProducts } from "../redux/Slice/product.slice";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+import Pagination from "../../components/pagination/Pagination";
+import { getProducts } from "../../redux/Slice/product.slice";
 import ProductList from "./ProductList";
 
 let PageSize = 10;

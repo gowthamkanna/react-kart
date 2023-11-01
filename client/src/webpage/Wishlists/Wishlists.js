@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Footer from './Layout/Footer';
-import Header from './Layout/Header';
-import { getCustomerWishlistedProducts } from '../redux/Slice/customer.slice';
+import Footer from '../Layout/Footer';
+import Header from '../Layout/Header';
+import { getCustomerWishlistedProducts } from '../../redux/Slice/customer.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import WishlistProducts from './WishlistProducts';
 

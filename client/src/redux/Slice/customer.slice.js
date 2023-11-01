@@ -135,7 +135,6 @@ const customerSlice = createSlice({
     }
 });
 
-export const getCustomerWishlisted = (state) => state.customer.WishlistedProducts;
 export const {reducer} = customerSlice;
 
 export default reducer;

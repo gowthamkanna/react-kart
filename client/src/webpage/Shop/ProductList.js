@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 // import { addToWishlist } from "../redux/Slice/customer.slice";
 // import { toast } from "react-toastify";
 import { useSelector } from 'react-redux';
-import WishlistButton from './WishlistButton';
+import WishlistButton from '../Wishlists/WishlistButton';
 
 const ProductList = ({product}) => {
 
