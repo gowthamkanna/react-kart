@@ -50,11 +50,17 @@ export default function Shop () {
 
   const handleFilterOption = (e) =>{
     if(e.target.checked === true){
-      setFilterOption({categories : [...filterOption.categories, e.target.value]});
+      setFilterOption({
+        ...filterOption,
+        categories : [...filterOption.categories, e.target.value]
+      });
     }
     else {
       const filterResult = filterOption.categories.filter((filter) => filter !== e.target.value);
-      setFilterOption({categories : [...filterResult]});
+      setFilterOption({
+        ...filterOption,
+        categories : [...filterResult]
+      });
     }
     setCurrentPage(1);
   }

@@ -40,11 +40,16 @@ export default function Register () {
                     CustomerPassword: userInputs.CustomerPassword,
                 }))
                 .then((res) => {
+                  if(res.payload.responseType === "success"){
                     localStorage.setItem("authToken", res.payload.token);
                     localStorage.setItem("userType", res.payload.type);
                     localStorage.setItem("userId", res.payload.id);
                     navigate('/');
                     toast.success("Login Successfully.");
+                  }
+                  else {
+                    toast.error(res.payload.message);
+                  }
                 })
         }
     })

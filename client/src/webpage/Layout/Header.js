@@ -4,6 +4,8 @@ import { customerLogout, getCustomerData } from "../../redux/Slice/customer.slic
 import "../assets/style.css";
 import "../assets/responsive.css";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import swal from "sweetalert";
 
 export default function Header() {
   const authToken = localStorage.getItem("authToken");
@@ -48,10 +50,26 @@ export default function Header() {
   }
 
   function userLogout(){
-    dispatch(customerLogout())
-    .then((res) => {
-      navigate("/");
-    })
+    swal({
+      title: "Are you sure logout..?",
+      text: "sure to logout your account",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+      allowOutsideClick: false,
+    }).then((willDelete) => {
+      if (willDelete) {
+        navigate("/");
+        dispatch(customerLogout())
+        .then((res) => {
+          toast.success("User Logged out");
+          // navigate("/");
+        })
+      }
+    });
+
   }
 
   useEffect(() => {

@@ -8,12 +8,14 @@ const WishlistButton = ({productID, wishlistedProducts}) => {
 
 
     const addToWishlistButton = ((product = []) => {
+      if(wishlistedProducts){
         var isPresent = wishlistedProducts.some(function(item){ return item._id === product});
             return (!isPresent) ? 
             <button onClick={() => addProductToWishlist(product)} className="btn btn-info buy_now_btn"><i className="fa-regular fa-heart"></i></button> 
             :
             <button onClick={() => addProductToWishlist(product)} className="btn btn-info buy_now_btn"><i className="fa-solid fa-heart"></i></button>
-    })
+      }
+          })
 
     const addProductToWishlist = ((productID) =>{
         const userID = localStorage.getItem("userId");

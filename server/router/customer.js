@@ -32,12 +32,12 @@ router.post("/customers", async(req, res) => {
 router.post("/customer-login", async(req, res) => {
     var userData = await Customer.findOne({CustomerEmail: req.body.CustomerEmail});
     if(!userData){
-        return res.status(400).json("User not found");
+        return res.json({responseType: "error", message: "User not found"});
     }
 
     var validatepwd = await bcrypt.compare(req.body.CustomerPassword, userData.CustomerPassword);
     if(!validatepwd){
-        return res.status(400).json("Password incorrect");
+        return res.json({responseType: "error", message: "Password incorrect"});
     }
     var userToken = jwt.sign({email: userData.CustomerEmail}, "kartapp");
     res.header("authToken", userToken).json({
@@ -45,6 +45,7 @@ router.post("/customer-login", async(req, res) => {
         type: "customer",
         token: userToken,
         id: userData._id,
+        responseType: "success"
     });
 });
 

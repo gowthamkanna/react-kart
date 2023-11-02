@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/Slice/user";
+import { toast } from "react-toastify";
   
   // TODO remove, this demo shouldn't need to reset the theme.
   
@@ -52,9 +53,14 @@ const Login = (props) => {
                     password: userInputs.password,
                 }))
                 .then((res) => {
+                  if(res.payload.responseType === "success"){
                   localStorage.setItem("authToken", res.payload.token);
                   localStorage.setItem("userType", res.payload.type);
                   navigate('/admin/dashboard');
+                  }
+                  else {
+                    toast.error(res.payload.message);
+                  }
                 });
         }
     });

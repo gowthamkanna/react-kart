@@ -29,18 +29,19 @@ router.post("/register", async (req, res) => {
 router.post("/login", async(req, res) => {
     var userData = await User.findOne({email: req.body.email});
     if(!userData){
-        return res.status(400).json("User not found");
+        return res.json({responseType: "error", message: "User not found"});
     }
 
     var validatepwd = await bcrypt.compare(req.body.password, userData.password);
     if(!validatepwd){
-        return res.status(400).json("Password incorrect");
+        return res.json({responseType: "error", message: "Password incorrect"});
     }
     var userToken = jwt.sign({email: userData.email}, "kartapp");
     res.header("authToken", userToken).json({
         email: userData.email,
         type: userData.type,
         token: userToken,
+        responseType: "success"
     });
 })
 
