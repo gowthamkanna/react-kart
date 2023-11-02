@@ -29,7 +29,6 @@ const ProductList = ({product}) => {
     });
 
   return (
-    <>
     <div className="col-sm-6 col-md-4 col-lg-3">
         <div className="box">
             <div className="img-box">
@@ -42,9 +41,6 @@ const ProductList = ({product}) => {
              </Carousel>
             </div>
             <div className="detail-box">
-               {/* <h6 onClick={() => redirectToProductDetail(product._id)} className="cursor-pointer">
-                  {product.Name}
-                </h6> */}
                 <Link to={`/product-details/${product._id}`}><h6  className="cursor-pointer">
               {product.Name}
               </h6></Link>
@@ -61,7 +57,6 @@ const ProductList = ({product}) => {
           </div>
         </div>
         </div>
-    </>
   )
 }
 
@@ -75,4 +70,4 @@ export const ProductImages = ({image}) => {
     )
 }
 
-export default ProductList
+export default ProductList;

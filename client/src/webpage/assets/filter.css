@@ -1,0 +1,11 @@
+.sidebar__inner {
+  padding: 0 10px;
+}
+.filter-sidebar-container {
+  border-right: 1px solid #cbcbcb;
+}
+.filter-title {
+  font-size: 24px;
+  padding: 10px 0;
+  color: #dc3545;
+}

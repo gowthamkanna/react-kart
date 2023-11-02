@@ -120,7 +120,6 @@ router.get("/latest-products", async(req, res) => {
     .populate({ path :"ProductCategory", select: 'name' })
     .sort([["createdAt", "desc"]])
     .then(async(data) => {
-        console.log(data);
         // let ratingData = await Reviews.aggregate([{$group: {_id:"$productId", sum_val:{$sum:"$rating"}}}]);
         res.json(data);
     })

@@ -8,7 +8,6 @@ const WishlistButton = ({productID, wishlistedProducts}) => {
 
 
     const addToWishlistButton = ((product = []) => {
-        console.log(product);
         var isPresent = wishlistedProducts.some(function(item){ return item._id === product});
             return (!isPresent) ? 
             <button onClick={() => addProductToWishlist(product)} className="btn btn-info buy_now_btn"><i className="fa-regular fa-heart"></i></button> 
