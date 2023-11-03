@@ -109,27 +109,22 @@ export default function Header() {
             >
               <ul className="navbar-nav  ">
                 <li className="nav-item">
-                  <a className="nav-link" href="/">
+                  <span className="nav-link" onClick={() => navigate("/")}>
                     Home <span className="sr-only">(current)</span>
-                  </a>
+                  </span>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/shop">
+                  <span className="nav-link cursor-pointer" onClick={() => navigate("/shop")}>
                     Shop
-                  </a>
+                  </span>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="why.html">
-                    Why Us
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="testimonial.html">
+                  <a className="nav-link" href="/">
                     Testimonial
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="contact.html">
+                  <a className="nav-link" href="/">
                     Contact Us
                   </a>
                 </li>
