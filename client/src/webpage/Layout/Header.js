@@ -13,11 +13,14 @@ import swal from "sweetalert";
 export default function Header() {
   const authToken = localStorage.getItem("authToken");
   const userId = localStorage.getItem("userId");
-  const [name, setName] = useState("Guest");
+  // const [name, setName] = useState("Guest");
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const wishlistArray = useSelector((state) => state.customer.wishlist);
+  const cartArray = useSelector((state) => state.customer.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   function userLoggedIn() {
     if (authToken === null) {
       return (
@@ -29,10 +32,18 @@ export default function Header() {
     } else {
       return (
         <>
-          <a href="/">
-            <i className="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;
-            {name}
-          </a>
+          <Link to="/cart" className="add-to-cart-header">
+            <i className="fa fa-shopping-bag" aria-hidden="true">
+              {cartCount > 0 ? (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartCount}
+                  <span className="visually-hidden">Cart</span>
+                </span>
+              ) : null}
+            </i>
+            {/* &nbsp; */}
+            {/* {name} */}
+          </Link>
           <Link to="/wishlists">
             <i className="fa-regular fa-heart position-relative">
               {wishlistCount > 0 ? (
@@ -76,12 +87,13 @@ export default function Header() {
   useEffect(() => {
     if (userId !== null) {
       dispatch(getCustomerData(userId)).then((res) => {
-        setName(res.payload.CustomerName);
+        // setName(res.payload.CustomerName);
         setWishlistCount(res.payload.WishlistedProducts.length);
+        setCartCount(res.payload.AddToCart.length);
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, wishlistArray]);
+  }, [dispatch, wishlistArray, cartArray]);
 
   return (
     <>
@@ -114,7 +126,10 @@ export default function Header() {
                   </span>
                 </li>
                 <li className="nav-item">
-                  <span className="nav-link cursor-pointer" onClick={() => navigate("/shop")}>
+                  <span
+                    className="nav-link cursor-pointer"
+                    onClick={() => navigate("/shop")}
+                  >
                     Shop
                   </span>
                 </li>

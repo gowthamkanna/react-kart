@@ -14,14 +14,14 @@ const WishlistButton = ({ productID, wishlistedProducts }) => {
       return !isPresent ? (
         <button
           onClick={() => addProductToWishlist(product)}
-          className="btn btn-info buy_now_btn"
+          className="btn btn-info buy_now_btn add_to_wishlist_btn"
         >
           <i className="fa-regular fa-heart"></i>
         </button>
       ) : (
         <button
           onClick={() => addProductToWishlist(product)}
-          className="btn btn-info buy_now_btn"
+          className="btn btn-info buy_now_btn add_to_wishlist_btn"
         >
           <i className="fa-solid fa-heart"></i>
         </button>

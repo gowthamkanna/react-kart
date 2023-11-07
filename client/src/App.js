@@ -12,6 +12,7 @@ import Login from './webpage/auth/Login';
 import ProductDetail from './webpage/ProductDetail';
 import Register from './webpage/auth/Register';
 import Wishlists from './webpage/Wishlists/Wishlists';
+import Cart from './webpage/Cart/Cart';
 import Error404 from './webpage/error_pages/Error404';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/shop" element={<ProtectedWebRoute><Shop /></ProtectedWebRoute>} /> 
           <Route exact path="/wishlists" element={<ProtectedWebRoute><Wishlists /></ProtectedWebRoute>} /> 
           <Route exact path="/product-details/:productID" element={<ProtectedWebRoute><ProductDetail /></ProtectedWebRoute>} /> 
+          <Route exact path="/cart" element={<ProtectedWebRoute><Cart /></ProtectedWebRoute>} /> 
           <Route exact path="/login" element={<LoggedInRoute><Login /></LoggedInRoute>} /> 
           <Route exact path="/register" element={ <LoggedInRoute><Register /></LoggedInRoute>} /> 
           {/* Admin Routes */}

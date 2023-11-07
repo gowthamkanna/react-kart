@@ -3,15 +3,32 @@ import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 // import { addToWishlist } from "../redux/Slice/customer.slice";
 // import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WishlistButton from "../Wishlists/WishlistButton";
+import { addToCart } from "../../redux/Slice/customer.slice";
+import { toast } from "react-toastify";
 
 const ProductList = ({ product }) => {
   var wishlistedProducts = [];
+  const userID = localStorage.getItem("userId");
+  const dispatch = useDispatch();
   wishlistedProducts = useSelector(
     (state) => state.customer.customer.WishlistedProducts
   );
+  // const cartProducts = useSelector(getCartProductsById());
+  // console.log(cartProducts);
   // const dispatch = useDispatch();
+
+  const handleAddToCart = (productID) => {
+    dispatch(addToCart({userID, productID})).then(res => {
+        if(res.payload.type === "success"){
+          toast.success(res.payload.message);
+        }
+        else {
+          toast.error(res.payload.message);
+        }
+    });
+  }
 
   const ProductSliderConfiguration = () => ({
     showArrows: false,
@@ -44,12 +61,15 @@ const ProductList = ({ product }) => {
             <h6 className="cursor-pointer">{product.Name}</h6>
           </Link>
           <h6>
-            Price :<span>{product.SalePrice}</span>
+          <i className="fa-solid fa-indian-rupee-sign"> </i>&nbsp;<span>{product.SalePrice}</span>
           </h6>
         </div>
         <div className="text-center mt-2 mb-2">
-          <button className="btn btn-info buy_now_btn">
+          <button className="btn btn-info buy_now_btn" onClick={() => handleAddToCart(product._id) }>
             <i className="fa fa-shopping-cart"></i>
+          </button>&nbsp;
+          <button className="btn btn-info buy_now_btn">
+            Buy Now
           </button>
           &nbsp;
           <WishlistButton

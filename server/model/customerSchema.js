@@ -36,7 +36,12 @@ const CustomerSchema = mongoose.Schema({
     WishlistedProducts:  [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
+    }],
+    AddToCart:  [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
     }]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

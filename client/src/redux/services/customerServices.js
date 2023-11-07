@@ -18,6 +18,15 @@ const addToWishlist = (data) => {
 const removeWishlist = (data) => {
     return api.post(`/remove-wishlisted/`, data);
 }
+const addToCart = (data) => {
+    return api.post(`/add-to-cart/`, data);
+}
+const getCartById = (userID) => {
+    return api.get(`/cart/${userID}`);
+}
+const deletecartById = (data) => {
+    return api.post(`/remove-cart`, data);
+}
 
 const customerServices = {
     customerRegister,
@@ -26,6 +35,9 @@ const customerServices = {
     getCustomerWishlistedProducts,
     addToWishlist,
     removeWishlist,
+    addToCart,
+    getCartById,
+    deletecartById
 }
 
 export default customerServices;

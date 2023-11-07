@@ -53,7 +53,8 @@ router.post("/customer-login", async(req, res) => {
 router.get("/customers/:id", async (req, res) => {
     try{
     const data = await Customer.findById(req.params.id)
-    .populate({ path :"WishlistedProducts" });
+    .populate({ path :"WishlistedProducts" })
+    .populate({ path :"AddToCart" });
     // const wishlist = await Wishlist.find({userId : req.params.id});
     // const result = {...data._doc, wishlistCount : wishlist.length};
     res.json(data);

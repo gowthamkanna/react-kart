@@ -49,11 +49,27 @@ export const removeWishlist = createAsyncThunk("removeWishlist", async({ userID,
     return result.data;
 })
 
+export const addToCart = createAsyncThunk("addToCart", async({ userID, productID }) => {
+    const result = await customerServices.addToCart({ userID, productID });
+    return result.data;
+})
+
+export const getCartById = createAsyncThunk("getCartById", async(userID) => {
+    const result = await customerServices.getCartById(userID);
+    return result.data;
+})
+
+export const deletecartById = createAsyncThunk("deletecartById", async({userID, productID}) => {
+    const result = await customerServices.deletecartById({userID, productID});
+    return result.data;
+})
+
 const customerSlice = createSlice({
     name: "customer",
     initialState : {
         customer:{},
         wishlist:[],
+        cart:[],
         message: {},
         loading: false,
     },
@@ -131,9 +147,41 @@ const customerSlice = createSlice({
         },
         [removeWishlist.rejected]: (state, action) => {
             state.message = action.payload;
+        },
+        [addToCart.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [addToCart.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.cart = action.payload.cart;
+        },
+        [addToCart.rejected]: (state, action) => {
+            state.message = action.payload;
+        },
+        [getCartById.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getCartById.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.customer.cart = action.payload;
+        },
+        [getCartById.rejected]: (state, action) => {
+            state.message = action.payload;
+        },
+        [deletecartById.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [deletecartById.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.cart = action.payload.cart;
+        },
+        [deletecartById.rejected]: (state, action) => {
+            state.message = action.payload;
         }
     }
 });
+
+export const getCartProductsById = (state) => state.customer.customer.AddToCart;
 
 export const {reducer} = customerSlice;
 

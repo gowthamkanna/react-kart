@@ -7,6 +7,7 @@ const productRouter = require("./router/product");
 const reviewRouter = require("./router/reviews");
 const customerRouter = require("./router/customer");
 const wishlistRouter = require("./router/wishlist");
+const addTocartRouter = require("./router/cart");
 const morgan = require("morgan");
 const cors = require("cors");
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use("/api", userRouter, categoryRouter, productRouter, reviewRouter, customerRouter, wishlistRouter);
+app.use("/api", userRouter, categoryRouter, productRouter, reviewRouter, customerRouter, wishlistRouter, addTocartRouter);
 
 app.use('/images', express.static('Product_Images'));
 

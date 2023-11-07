@@ -112,3 +112,36 @@ img.img-small {
   padding-top: 60px !important;
   padding-bottom: 90px;
 }
+.add_to_wishlist_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  padding: 10px 10px 0 0;
+}
+.add_to_wishlist_btn:hover, .add_to_wishlist_btn:focus{
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.add_to_wishlist_btn:active:focus {
+  box-shadow: none;
+}
+.add-to-cart-header {
+  position: relative;
+}
+.kart-grid-image {
+  height: auto;
+  width: 250px;
+}
+@media only screen and (max-width: 990px) {
+  .kart-grid-image {
+    height: auto;
+    width: 100%;
+  }
+}
+.no-kart-products span {
+  width: 100%;
+}
