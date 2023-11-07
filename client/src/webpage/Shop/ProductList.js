@@ -20,15 +20,14 @@ const ProductList = ({ product }) => {
   // const dispatch = useDispatch();
 
   const handleAddToCart = (productID) => {
-    dispatch(addToCart({userID, productID})).then(res => {
-        if(res.payload.type === "success"){
-          toast.success(res.payload.message);
-        }
-        else {
-          toast.error(res.payload.message);
-        }
+    dispatch(addToCart({ userID, productID })).then((res) => {
+      if (res.payload.type === "success") {
+        toast.success(res.payload.message);
+      } else {
+        toast.error(res.payload.message);
+      }
     });
-  }
+  };
 
   const ProductSliderConfiguration = () => ({
     showArrows: false,
@@ -61,16 +60,19 @@ const ProductList = ({ product }) => {
             <h6 className="cursor-pointer">{product.Name}</h6>
           </Link>
           <h6>
-          <i className="fa-solid fa-indian-rupee-sign"> </i>&nbsp;<span>{product.SalePrice}</span>
+            <i className="fa-solid fa-indian-rupee-sign"> </i>&nbsp;
+            <span>{product.SalePrice}</span>
           </h6>
         </div>
         <div className="text-center mt-2 mb-2">
-          <button className="btn btn-info buy_now_btn" onClick={() => handleAddToCart(product._id) }>
+          <button
+            className="btn btn-info buy_now_btn"
+            onClick={() => handleAddToCart(product._id)}
+          >
             <i className="fa fa-shopping-cart"></i>
-          </button>&nbsp;
-          <button className="btn btn-info buy_now_btn">
-            Buy Now
           </button>
+          &nbsp;
+          <button className="btn btn-info buy_now_btn">Buy Now</button>
           &nbsp;
           <WishlistButton
             key={product._id}

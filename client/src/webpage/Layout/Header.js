@@ -13,7 +13,7 @@ import swal from "sweetalert";
 export default function Header() {
   const authToken = localStorage.getItem("authToken");
   const userId = localStorage.getItem("userId");
-  // const [name, setName] = useState("Guest");
+  const [name, setName] = useState("Guest");
   const [wishlistCount, setWishlistCount] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const wishlistArray = useSelector((state) => state.customer.wishlist);
@@ -33,7 +33,7 @@ export default function Header() {
       return (
         <>
           <Link to="/cart" className="add-to-cart-header">
-            <i className="fa fa-shopping-bag" aria-hidden="true">
+            <i className="fa-solid fa-bag-shopping">
               {cartCount > 0 ? (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {cartCount}
@@ -44,6 +44,7 @@ export default function Header() {
             {/* &nbsp; */}
             {/* {name} */}
           </Link>
+
           <Link to="/wishlists">
             <i className="fa-regular fa-heart position-relative">
               {wishlistCount > 0 ? (
@@ -54,7 +55,12 @@ export default function Header() {
               ) : null}
             </i>
           </Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <Link to="/" className="add-to-cart-header">
+            <i className="fa-regular fa-user" aria-hidden="true"></i>
+            &nbsp;
+            {name}
+          </Link>
           <button onClick={userLogout} className="btn nav_search-btn">
             <i className="fa fa-power-off" aria-hidden="true"></i>
           </button>
@@ -87,7 +93,7 @@ export default function Header() {
   useEffect(() => {
     if (userId !== null) {
       dispatch(getCustomerData(userId)).then((res) => {
-        // setName(res.payload.CustomerName);
+        setName(res.payload.CustomerName);
         setWishlistCount(res.payload.WishlistedProducts.length);
         setCartCount(res.payload.AddToCart.length);
       });
@@ -121,7 +127,10 @@ export default function Header() {
             >
               <ul className="navbar-nav  ">
                 <li className="nav-item">
-                  <span className="nav-link" onClick={() => navigate("/")}>
+                  <span
+                    className="nav-link cursor-pointer"
+                    onClick={() => navigate("/")}
+                  >
                     Home <span className="sr-only">(current)</span>
                   </span>
                 </li>
@@ -132,11 +141,6 @@ export default function Header() {
                   >
                     Shop
                   </span>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Testimonial
-                  </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/">
