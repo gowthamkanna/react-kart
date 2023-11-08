@@ -1,4 +1,5 @@
 Project Name : MYKART (Ecommerce Website with admin panel)
+
 Technologies : MERN STACK (MongoDB, ExpressJS, React, NodeJS)
 
 IMPLEMENTATION :
@@ -14,9 +15,9 @@ PROJECT DETAILS :
 
 TECHNOLOGY DETAILS :
 
-Frontend => React, Redux, Redux Toolkit, React Hooks
-Backend => NodeJS, Express JS, Mongoose
-Database => MongoDB
+1. Frontend => React, Redux, Redux Toolkit, React Hooks
+2. Backend => NodeJS, Express JS, Mongoose
+3. Database => MongoDB
 
 PROJECT FEATURES :
 
@@ -27,14 +28,13 @@ ADMIN PANEL :
 3. Admin Product Rating (Create/Read/Update/Delete) (Sample Feature)
 4. Login Page (Login feature with jwt token)
 5. Reports (Orders) (Need to be implemented in future)
-6. Client Testimonials (Need to be implemented in future)
-7. Dashboard (Need to be implemented in future)
+6. Dashboard (Need to be implemented in future)
 
 WEBSITE (ECOMMERCE): 
 
 1. Home Page (Latest Product Listing, Carousal)
 2. Shop Page (All Product Listing, Product Filter Option(Keyword, Category), Add to Wishlist)
-3. Testimonial Page (Need to be implemented in future)
+3. Add to Cart / Remove from cart
 4. Contact Us Page (Need to be implemented in future)
 5. Wishlist Page (Wishlisted Products, Delete Option)
 6. Login Page (Customer) (Login feature with jwt token and Routes protection based on user type)
