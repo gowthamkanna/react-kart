@@ -16,6 +16,7 @@ router.post("/register", async (req, res) => {
             name : req.body.name,
             email : req.body.email,
             password : hash,
+            type: req.body.type
         });
 
         var data = await user.save();
