@@ -107,7 +107,7 @@ export default function Header() {
         <header className="header_section">
           <nav className="navbar navbar-expand-lg custom_nav-container ">
             <a className="navbar-brand" href="/">
-              <span>-KART-</span>
+              <span>-EASY CART-</span>
             </a>
             <button
               className="navbar-toggler"

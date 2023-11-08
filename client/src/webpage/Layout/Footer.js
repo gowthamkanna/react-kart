@@ -64,7 +64,7 @@ export default function Footer() {
           <div className="container">
             <p>
               &copy; <span id="displayYear"></span> All Rights Reserved By
-              <a href="/"> KART</a>
+              <a href="/"> EASY KART</a>
             </p>
           </div>
         </footer>

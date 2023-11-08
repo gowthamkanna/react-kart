@@ -125,7 +125,7 @@ export default function Header() {
               color="inherit"
               sx={{ flexGrow: 1 }}
             >
-              MY KART
+              EASY CART
             </Typography>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
