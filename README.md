@@ -6,7 +6,9 @@ IMPLEMENTATION :
 ---------------------------------------------------
 
 STEP 1 : Upload the complete source to your local folder
+
 STEP 2 : Install the node modules for both (client and server) folders using "npm install"
+
 STEP 3 : Run the (client and server) project using "npm start"
 
 
