@@ -1,4 +1,4 @@
-Project Name : MYKART (Ecommerce Website with admin panel)
+Project Name : EASY CART (Ecommerce Website with admin panel)
 
 Technologies : MERN STACK (MongoDB, ExpressJS, React, NodeJS)
 
